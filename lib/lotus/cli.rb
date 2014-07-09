@@ -2,6 +2,7 @@ require 'thor'
 require 'lotus/environment'
 require 'lotus/commands/server'
 require 'lotus/commands/console'
+require 'lotus/commands/new'
 require 'lotus/utils/hash'
 
 module Lotus
@@ -36,6 +37,11 @@ module Lotus
       else
         Lotus::Commands::Console.new(environment).start
       end
+    end
+
+    desc 'new APP_NAME', 'generate a new lotus application'
+    def new(name)
+      Lotus::Commands::New.generate_application(name, options)
     end
 
     private
